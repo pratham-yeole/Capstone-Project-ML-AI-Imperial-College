@@ -57,4 +57,3 @@ To keep the pipeline robust, I standardized weekly data updates by:
 
 This project is a living process, meaning I will continue refining model choice, acquisition strategy, and query efficiency as more results become available.
 Biggest Lesson So-Far - in black-box settings, disciplined data management and careful exploration-exploitation balance are as important as the model itself. I plan to keep improving this README as my strategy matures in later submissions.
-<img width="451" height="682" alt="image" src="https://github.com/user-attachments/assets/29a9b123-790c-4c8a-914a-f24227c3e3ec" />
