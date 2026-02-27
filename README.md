@@ -10,14 +10,16 @@ From a career perspective, this project helps me demonstrate practical skills in
 ### Input and Outputs
 
 For each function, I submit an input vector (x) with a fixed dimensionality and receive a scalar output (y = f(x)).
-- Function 1: 2D input
-- Function 2: 2D input
-- Function 3: 3D input
-- Function 4: 4D input
-- Function 5: 4D input
-- Function 6: 5D input
-- Function 7: 6D input
-- Function 8: 8D input
+- **Function 1**: 2D input
+- **Function 2**: 2D input
+- **Function 3**: 3D input
+- **Function 4**: 4D input
+- **Function 5**: 4D input
+- **Function 6**: 5D input
+- **Function 7**: 6D input
+- **Function 8**: 8D input
+
+I have added more information about the specific dataset in the overview of the dataset folder. This should give you information on what the data is about and what the optimisation goal is.
 
 The query format is a numeric vector (float values), and the response is a single numeric score. I store data as:
 •	X: matrix of queried points, shape (n_samples, n_features)
@@ -49,12 +51,13 @@ I experimented with regression-based surrogates and Bayesian-style thinking for 
 - **Exploration**: sample uncertain or under-covered regions.
 
 To keep the pipeline robust, I standardized weekly data updates by:
-•	loading the correct function-specific .npy files,
-•	appending one new point at a time,
-•	enforcing shape consistency by function dimension,
-•	de-duplicating repeated points with np.unique,
-•	saving clean updated X and Y back to disk.
+- loading the correct function-specific .npy files,
+- appending one new point at a time,
+- enforcing shape consistency by function dimension,
+- de-duplicating repeated points with np.unique,
+- saving clean updated X and Y back to disk.
 
 This project is a living process, meaning I will continue refining model choice, acquisition strategy, and query efficiency as more results become available.
+
 **Biggest Lesson So-Far** - in black-box settings, disciplined data management and careful exploration-exploitation balance are as important as the model itself. 
 - I plan to keep improving this README as my strategy matures in later submissions.
