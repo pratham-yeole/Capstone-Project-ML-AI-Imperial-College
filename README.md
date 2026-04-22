@@ -78,3 +78,33 @@ Across all three weeks, acquisition function choice followed a consistent decisi
 **The biggest lesson from Weeks 4-6**: the acquisition function and kernel must be co-designed per function, not applied uniformly. 
 - A single strategy applied across all eight functions would have caused premature exploitation in some and aimless exploration in others.
 
+## Technical Approach (Weeks 7-9)
+
+**Week 7** introduced Yeo-Johnson power transformations to stabilize output skewness. By mapping outputs (notably in F1, F2, and F4) to a Gaussian distribution, the surrogate models gained the sensitivity needed to distinguish exceptional peaks from good results, preventing the over-smoothing seen in earlier weeks.
+
+**Week 8** pivoted to a Focused Search Grid. Sampling shifted from uniform global exploration to a Normal distribution centred on all-time best coordinates (80-85% density). This high-resolution exploitation directly enabled yield breakthroughs in F5 and near-perfect convergence in F3.
+
+**Week 9** finalized Kernel Specialization and Hybrid Search. WhiteKernel integration for F2 prevented the model from hallucinating patterns in noise. For high-dimensional tasks (F7, F8), a 15-20% uniform sampling component was maintained alongside local grids as an insurance policy against the curse of dimensionality and undiscovered global optima.
+
+The refined acquisition decision rules for the final optimization stretch were:
+- EI with Ultra-Low xi (0.0005–0.001): Squeezed final gains from converged surfaces (F3, F5).
+- UCB with High beta: Forced movement out of persistent local optima in rugged landscapes (F4).
+- EI with Power Transforms: Mathematically prioritized marginal improvements during high-dimensional recovery (F6, F8).
+
+**The biggest lesson from Weeks 7-9**: Success shifted from finding the right neighbourhood to finding the exact address. 
+- The combination of output transformation and localized search proved that a Gaussian Process is most effective when transitioned from a global explorer to a high-precision local optimizer.
+
+## **Technical Approach (Week 10-12)
+
+**Week 10** transitioned to Precision Exploitation by deploying Focused Grids with ultra-tight search radii (std 0.008–0.010). Concentrating sampling density around historical bests yielded immediate breakthroughs in Function 2 (reaching 0.6296) and pushed Function 5 yield past the 6000-unit threshold.
+
+**Week 11** implemented Dynamic Acquisition Tuning to stabilize high-dimensional noise. By lowering exploration parameters (xi) to 0.0003–0.0005 for converged functions (F3, F5) and maintaining Yeo-Johnson transforms for output stability, the models avoided local oscillation and established a clear trajectory for final queries in F7 and F8.
+
+**Week 12** concluded with Full Model Commitment, shifting from probabilistic scouting to deterministic execution. For converged surfaces (F3, F6), exploration was bypassed to query the exact global maximum predicted by the GP mean. This terminal strategy successfully exhausted the search space, achieving a project-high 6605.98 yield for F5 and an all-time best of 2.614 for F7.
+
+Final Decision Rules:
+- Ultra-Low xi for EI (0.0003–0.0005): Squeezed final marginal gains from established unimodal peaks in F3 and F5.
+- Matern 2.5 Kernel & WhiteKernel: Maintained as the primary architecture for F1–F8 to model complex surfaces while accounting for observation noise.
+- Strict Parameter Ceilings: Locked high-dimensional queries (F7) within valid architectural limits to ensure usable final results.
+
+**Takeaway/Lesson**: The final trimester proved that once a surface is mapped, success comes from shifting the Gaussian Process from a sceptical explorer to a high-precision executor, prioritizing localized refinement over global discovery.
