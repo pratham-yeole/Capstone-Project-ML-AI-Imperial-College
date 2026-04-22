@@ -94,7 +94,7 @@ The refined acquisition decision rules for the final optimization stretch were:
 **The biggest lesson from Weeks 7-9**: Success shifted from finding the right neighbourhood to finding the exact address. 
 - The combination of output transformation and localized search proved that a Gaussian Process is most effective when transitioned from a global explorer to a high-precision local optimizer.
 
-## **Technical Approach (Week 10-12)
+## Technical Approach (Week 10-12)
 
 **Week 10** transitioned to Precision Exploitation by deploying Focused Grids with ultra-tight search radii (std 0.008–0.010). Concentrating sampling density around historical bests yielded immediate breakthroughs in Function 2 (reaching 0.6296) and pushed Function 5 yield past the 6000-unit threshold.
 
